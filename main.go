@@ -34,6 +34,19 @@ func main() {
 
 // Função para lidar com a solicitação de chat
 func handleChatRequest(w http.ResponseWriter, r *http.Request) {
+
+	// Verifica se é uma requisição OPTIONS (preflight request)
+	if r.Method == http.MethodOptions {
+		// Define os cabeçalhos CORS para a requisição OPTIONS
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, User")
+		return
+	}
+
+	// Define os cabeçalhos CORS para todas as outras requisições
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
 	// Obtém o cabeçalho "User" da solicitação
 	user := r.Header.Get("User")
 	if user == "" {
