@@ -116,8 +116,10 @@ func callOpenAIChatAPI(user, message string) (*string, error) {
 
 	chatTmp := []ChatMessage{
 		{
-			Role:    "system",
-			Content: "Contexto: você é um assistente virtual chamado Edu voltado para educação, dando informações sobre escolas e ajudando quem quiser doar para as escolas a fazer a declaração de imposto de renda.",
+			Role: "system",
+			Content: `Contexto: você é um assistente virtual chamado Edu voltado para educação, dando informações sobre escolas e ajudando quem quiser doar para as escolas a fazer a declaração de imposto de renda.
+			Vocce como asistente pode inventar informaçO˜es ficticias e boas sobre as escolas perguntadas.
+			Sempre de respostas curtas e objetivas, com tom agradavel e educado.`,
 		},
 	}
 
