@@ -29,7 +29,7 @@ var chats = make(map[string][]ChatMessage)
 
 func main() {
 	http.HandleFunc("/", handleChatRequest)
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
 }
 
 // Função para lidar com a solicitação de chat
